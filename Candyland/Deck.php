@@ -1,9 +1,16 @@
 <?php
 /**
- * Deck of cards for the game
+ * Represents the Deck of cards used to play the game
+ * @author Tom Breese <thomasjbreese@gmail.com>
  */
+namespace Candyland;
+
 class Deck {
-	// full deck of cards
+
+	/**
+	 * Full deck of cards
+	 * @var array
+	 */
 	private $deck = [
 		// reds
 		['card' => 'red', 'double' => true],
@@ -82,17 +89,21 @@ class Deck {
 		['card' => 'princess lolly', 'double' => false],
 		['card' => 'queen frostine', 'double' => false],
 	];
-	// current shuffled playing deck
-	private $active_deck;
+
+	/**
+	 * Current shuffled deck of playing cards
+	 * @var array
+	 */
+	private $activeDeck;
 
 	/**
 	 * Instantiates a new deck object and shuffles the deck
 	 */
 	public function __construct() {
 		// make a copy of the deck and shuffle it
-		$this->active_deck = $this->deck;
-		shuffle($this->active_deck);
-	} // end __construct
+		$this->activeDeck = $this->deck;
+		shuffle($this->activeDeck);
+	}
 
 	/**
 	 * Returns the next card on the top of the deck
@@ -101,11 +112,10 @@ class Deck {
 	 */
 	public function draw() {
 		// auto reshuffle if the deck is depleated
-		if (count($this->active_deck) == 0) {
-			$this->active_deck = $this->deck;
-			shuffle($this->active_deck);
+		if (count($this->activeDeck) == 0) {
+			$this->activeDeck = $this->deck;
+			shuffle($this->activeDeck);
 		}
-		return array_pop($this->active_deck);
-	} // end draw
-
-} // end Deck
+		return array_pop($this->activeDeck);
+	}
+}

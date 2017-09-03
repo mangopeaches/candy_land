@@ -1,13 +1,22 @@
 <?php
+/**
+ * The Candyland game board
+ * @author Tom Breese <thomasjbreese@gmail.com>
+ */
+namespace Candyland;
 
 class Board {
-	// game boar as an array
+
+	/**
+	 * Game board represented as an array
+	 * @var array
+	 */
 	private static $board = [
 		['color' => 'red'],
 		['color' => 'purple'], 
 		['color' => 'yellow'],
 		['color' => 'blue'],
-		['color' => 'orange', 'special' => 'Rainbow Trail', 'goto' => 59], // TODO: add array index
+		['color' => 'orange', 'special' => 'Rainbow Trail', 'goto' => 59],
 		['color' => 'green'],
 		['color' => 'red'],
 		['color' => 'purple'],
@@ -139,7 +148,10 @@ class Board {
 		['color' => 'purple'],
 	];
 
-	// quick special => position map
+	/**
+	 * Maps special names to position on the board
+	 * @var array
+	 */
 	private static $specials = [
 		'plumpy' => 8,
 		'mr. mint' => 17,
@@ -149,7 +161,10 @@ class Board {
 		'queen frostine' => 104,
 	];
 
-	// array of valid colors
+	/**
+	 * Valid colors
+	 * @var array
+	 */
 	private static $colors = ['red', 'purple', 'yellow', 'blue', 'orange', 'green'];
 
 	/**
@@ -163,7 +178,7 @@ class Board {
 		} else {
 			return false;
 		}
-	} // end get_position
+	}
 
 	/**
 	 * Returns the next position for the player
@@ -226,7 +241,7 @@ class Board {
 			}
 		}
 		return $move;
-	} // end move
+	}
 
 	/**
 	 * Determines if the game is over
@@ -235,6 +250,5 @@ class Board {
 	 */
 	public static function winner($index) {
 		return ($index == count(self::$board) - 1);
-	} // end winner
-
-} // end Board
+	}
+}

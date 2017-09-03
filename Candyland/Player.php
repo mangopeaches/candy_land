@@ -1,67 +1,86 @@
 <?php
 /**
  * Represents a player playing the game
+ * @author Tom Breese <thomasjbreese@gmail.com>
  */
+namespace Candyland;
+
 class Player {
-	// current player position
+	/**
+	 * Player's current position
+	 * @var integer
+	 */
 	private $postion;
-	// name of the player
+
+	/**
+	 * Name of the player
+	 * @var string
+	 */
 	private $name;
-	// whether or not the player is stuck
+
+	/**
+	 * Whether or not the player is stuck
+	 * @var bool
+	 */
 	private $stuck;
-	// unique id for a player
-	private $player_id;
+
+	/**
+	 * Player's unique id
+	 * @var mixed
+	 */
+	private $playerId;
 
 	/**
 	 * Creates a new player object
 	 * @param  string $name  	 name of the player
-	 * @param  int    $player_id unique id for the player
+	 * @param  int    $playerId unique id for the player
 	 */
-	public function __construct($name, $player_id) {
+	public function __construct($name, $playerId) {
 		$this->name = $name;
 		$this->position = 0;
 		$this->stuck = false;
-		$this->player_id = $player_id;
-	} // end __construct
+		$this->playerId = $playerId;
+	}
 
 	/**
 	 * Sets the playes position
 	 * @param int $index position
+	 * @return void
 	 */
-	public function set_position($index) {
+	public function setPosition($index) {
 		$this->position = $index;
-	} // end set_position
+	}
 
 	/**
 	 * Sets the plays stuck status
 	 * @param mixed $stuck false to clear the stuck or a string of the color to set stuck
+	 * @return void
 	 */
-	public function set_stuck($stuck) {
+	public function setStuck($stuck) {
 		$this->stuck = $stuck;
-	} // end set_stuck
+	}
 
 	/**
 	 * Returns the players name
 	 * @return string $name player's name
 	 */
-	public function get_name() {
+	public function getName() {
 		return $this->name;
-	} // end get_name
+	}
 
 	/**
 	 * Returns the players current position on the board
 	 * @return int $position player's current position
 	 */
-	public function get_position() {
+	public function getPosition() {
 		return $this->position;
-	} // end get_position
+	}
 
 	/**
 	 * Returns the players stuck status
 	 * @return mixed $stuck false when not stuck or a color indicating stuck
 	 */
-	public function get_stuck() {
+	public function getStuck() {
 		return $this->stuck;
-	} // end get_stuck
-
-} // end Player
+	} 
+}
